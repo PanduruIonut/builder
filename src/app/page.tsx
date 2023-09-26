@@ -9,6 +9,8 @@ export default function Home() {
 
   const [currentFramework, setFramework] = useState<Framework>(frameworks[0])
 
+  const [showBackground, setShowBackground] = useState(false)
+
   useEffect(() => {
     let currentIndex = 0;
     const rotateFramework = () => {
@@ -17,6 +19,10 @@ export default function Home() {
     }
     const intervalId = setInterval(rotateFramework, 3000)
     return () => clearInterval(intervalId)
+  }, [])
+
+  useEffect(() => {
+    setShowBackground(true)
   }, [])
 
   return (
@@ -41,6 +47,8 @@ export default function Home() {
           backgroundSize: "30px"
         }}
       />
+      <div className={cn("bg-black fixed inset-0 transition-opacity duration-[1500ms]",
+        !showBackground ? "opacity-100" : "opacity-0")} />
     </main>
   )
 }
