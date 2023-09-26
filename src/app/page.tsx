@@ -4,6 +4,9 @@ import Image from "next/image"
 import { frameworks, type Framework } from "@/utils/framework-utils"
 import { useState, useEffect, use } from "react"
 import { cn } from '@/utils/tailwind-utils'
+import { Poppins } from "next/font/google"
+
+const poppins = Poppins({ weight: "700", subsets: ["latin"] })
 
 export default function Home() {
 
@@ -49,6 +52,14 @@ export default function Home() {
       />
       <div className={cn("bg-black fixed inset-0 transition-opacity duration-[1500ms]",
         !showBackground ? "opacity-100" : "opacity-0")} />
+      <div className="max-w-7xl mt-20 mx-auto">
+        <div className="flex flex-col items-center relative z-10">
+          <h1 className={`text-5xl max-w-3xl text-center leading-snug mb-12 ${poppins.className}`}>
+            <Image alt="figma logo" className="inline-block mr-8 -mt-2" src={assets.figma} width={50} height={50} />
+            to framework will <span> never </span> be the same again
+          </h1>
+        </div>
+      </div>
     </main>
   )
 }
